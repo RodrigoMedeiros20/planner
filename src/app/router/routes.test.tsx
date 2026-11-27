@@ -21,7 +21,8 @@ describe('app layout', () => {
     const user = userEvent.setup()
     renderAt('/settings')
 
-    await user.selectOptions(screen.getByLabelText('Idioma'), 'en')
+    await user.click(screen.getByRole('combobox', { name: 'Idioma' }))
+    await user.click(await screen.findByRole('option', { name: 'English' }))
 
     expect(
       screen.getByRole('heading', { name: 'Settings' }),
