@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getSupabaseConfig } from './supabaseConfig'
+import { getSupabaseConfig } from './config'
 
 describe('getSupabaseConfig', () => {
   it('returns the url and key when both are set', () => {

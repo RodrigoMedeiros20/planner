@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router'
-import { BottomNav } from '../components/nagivation/BottonNav'
-import { Sidebar } from '../components/nagivation/Sidebar'
-import { useTheme } from '../hooks/useTheme'
+import { useTheme } from '@/features/toggle-theme'
+import { BottomNav } from '@/widgets/bottom-nav'
+import { Sidebar } from '@/widgets/sidebar'
 
 export function AppLayout() {
   const { theme, toggleTheme } = useTheme()
