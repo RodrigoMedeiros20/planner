@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router'
-import { navItems } from './navItems'
+import { navItems } from '@/shared/config/navigation'
 
 export function BottomNav() {
   return (

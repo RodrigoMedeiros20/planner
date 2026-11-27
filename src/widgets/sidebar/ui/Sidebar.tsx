@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router'
-import { Check, Moon, Sun } from 'lucide-react'
-import type { Theme } from '../../hooks/useTheme'
-import { navItems } from './navItems'
+import { Check } from 'lucide-react'
+import { ThemeToggle, type Theme } from '@/features/toggle-theme'
+import { navItems } from '@/shared/config/navigation'
 
 type SidebarProps = {
   theme: Theme
@@ -9,8 +9,6 @@ type SidebarProps = {
 }
 
 export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
-  const isDark = theme === 'dark'
-
   return (
     <aside className="border-border bg-surface sticky top-0 hidden h-screen w-64 shrink-0 flex-col gap-7 border-r px-4 py-7 transition-colors duration-300 md:flex">
       <div className="flex items-center gap-2.5 px-2.5">
@@ -40,18 +38,9 @@ export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
         ))}
       </nav>
 
-      <button
-        type="button"
-        onClick={onToggleTheme}
-        className="border-border text-foreground hover:bg-surface-muted mt-auto flex min-h-11 items-center gap-3 rounded-[10px] border px-3 text-sm transition-colors"
-      >
-        {isDark ? (
-          <Sun className="size-[18px]" aria-hidden="true" />
-        ) : (
-          <Moon className="size-[18px]" aria-hidden="true" />
-        )}
-        {isDark ? 'Modo claro' : 'Modo escuro'}
-      </button>
+      <div className="mt-auto">
+        <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+      </div>
     </aside>
   )
 }
