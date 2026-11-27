@@ -53,4 +53,10 @@ export default defineConfig([
     },
   },
   ...layers.map(fsdBoundaries),
+  {
+    files: ['src/shared/ui/**/*.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])
