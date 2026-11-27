@@ -2,6 +2,7 @@ import { NavLink } from 'react-router'
 import { Check } from 'lucide-react'
 import { ThemeToggle, type Theme } from '@/features/toggle-theme'
 import { navItems } from '@/shared/config/navigation'
+import { useTranslation } from 'react-i18next'
 
 type SidebarProps = {
   theme: Theme
@@ -9,6 +10,8 @@ type SidebarProps = {
 }
 
 export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
+  const { t } = useTranslation()
+
   return (
     <aside className="border-border bg-surface sticky top-0 hidden h-screen w-64 shrink-0 flex-col gap-7 border-r px-4 py-7 transition-colors duration-300 md:flex">
       <div className="flex items-center gap-2.5 px-2.5">
@@ -18,8 +21,8 @@ export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
         <span className="text-lg font-bold tracking-tight">Planner</span>
       </div>
 
-      <nav aria-label="Menu principal" className="flex flex-col gap-1">
-        {navItems.map(({ to, label, icon: Icon }) => (
+      <nav aria-label={t('nav.label')} className="flex flex-col gap-1">
+        {navItems.map(({ to, labelKey, icon: Icon }) => (
           <NavLink
             key={to}
             to={to}
@@ -33,7 +36,7 @@ export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
             }
           >
             <Icon className="size-[18px]" aria-hidden="true" />
-            {label}
+            {t(`nav.${labelKey}`)}
           </NavLink>
         ))}
       </nav>
