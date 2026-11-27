@@ -1,5 +1,6 @@
 import { Moon, Sun } from 'lucide-react'
 import type { Theme } from '../model/useTheme'
+import { useTranslation } from 'react-i18next'
 
 type ThemeToggleProps = {
   theme: Theme
@@ -7,6 +8,7 @@ type ThemeToggleProps = {
 }
 
 export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
+  const { t } = useTranslation()
   const isDark = theme === 'dark'
 
   return (
@@ -20,7 +22,7 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       ) : (
         <Moon className="size-[18px]" aria-hidden="true" />
       )}
-      {isDark ? 'Modo claro' : 'Modo escuro'}
+      {isDark ? t('theme.light') : t('theme.dark')}
     </button>
   )
 }
