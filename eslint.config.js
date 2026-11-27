@@ -14,7 +14,8 @@ function fsdBoundaries(layer) {
   const patterns = [
     {
       group: sliceLayers.map((name) => `@/${name}/*/*`),
-      message: 'Import from the slice public API (its index.ts), not from inside the slice.',
+      message:
+        'Import from the slice public API (its index.ts), not from inside the slice.',
     },
     {
       group: ['../../*'],
