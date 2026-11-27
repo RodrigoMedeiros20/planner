@@ -1,17 +1,30 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg: #f5f6fa;
-  --surface: #ffffff;
-  --surface-muted: #eef0f6;
-  --border: #e4e6ee;
+  --radius: 0.75rem;
+
+  --background: #f5f6fa;
   --foreground: #1a1c29;
-  --muted: #5d6276;
-  --accent: #5b5bd6;
-  --accent-soft: #eeeefd;
-  --on-accent: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #1a1c29;
+  --popover: #ffffff;
+  --popover-foreground: #1a1c29;
+  --primary: #5b5bd6;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0f6;
+  --secondary-foreground: #1a1c29;
+  --muted: #eef0f6;
+  --muted-foreground: #5d6276;
+  --accent: #eeeefd;
+  --accent-foreground: #5b5bd6;
+  --destructive: #b42318;
+  --border: #e4e6ee;
+  --input: #dadde7;
+  --ring: #5b5bd6;
   --control: #c3c6d4;
 
   --late: #b42318;
@@ -29,15 +42,24 @@
 }
 
 .dark {
-  --bg: #111219;
-  --surface: #1a1c25;
-  --surface-muted: #252836;
-  --border: #2c2f3d;
+  --background: #111219;
   --foreground: #ecedf3;
-  --muted: #a3a7ba;
-  --accent: #9b9cf6;
-  --accent-soft: #272a4c;
-  --on-accent: #111219;
+  --card: #1a1c25;
+  --card-foreground: #ecedf3;
+  --popover: #1a1c25;
+  --popover-foreground: #ecedf3;
+  --primary: #9b9cf6;
+  --primary-foreground: #111219;
+  --secondary: #252836;
+  --secondary-foreground: #ecedf3;
+  --muted: #252836;
+  --muted-foreground: #a3a7ba;
+  --accent: #272a4c;
+  --accent-foreground: #9b9cf6;
+  --destructive: #ffa39a;
+  --border: #2c2f3d;
+  --input: #3a3e4f;
+  --ring: #9b9cf6;
   --control: #4b4f63;
 
   --late: #ffa39a;
@@ -57,16 +79,26 @@
 @theme inline {
   --font-sans:
     'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
 
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-muted: var(--surface-muted);
-  --color-border: var(--border);
+  --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-on-accent: var(--on-accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --color-control: var(--control);
 
   --color-late: var(--late);
@@ -85,6 +117,14 @@
   --color-board-sky-soft: var(--board-sky-soft);
   --color-board-mint-soft: var(--board-mint-soft);
 
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
   --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 
   @keyframes rise {
@@ -100,8 +140,12 @@
 }
 
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
   body {
-    @apply bg-bg text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
     transition:
       background-color 0.35s ease,
       color 0.35s ease;
