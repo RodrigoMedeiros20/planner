@@ -1,6 +1,7 @@
 import { Moon, Sun } from 'lucide-react'
-import type { Theme } from '../model/useTheme'
 import { useTranslation } from 'react-i18next'
+import { Button } from '@/shared/ui/button'
+import type { Theme } from '../model/useTheme'
 
 type ThemeToggleProps = {
   theme: Theme
@@ -12,10 +13,11 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   const isDark = theme === 'dark'
 
   return (
-    <button
+    <Button
       type="button"
+      variant="outline"
       onClick={onToggle}
-      className="border-border text-foreground hover:bg-surface-muted flex min-h-11 w-full items-center gap-3 rounded-[10px] border px-3 text-sm transition-colors"
+      className="h-11 w-full justify-start gap-3 rounded-[10px] bg-transparent px-3 font-normal dark:bg-transparent"
     >
       {isDark ? (
         <Sun className="size-[18px]" aria-hidden="true" />
@@ -23,6 +25,6 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
         <Moon className="size-[18px]" aria-hidden="true" />
       )}
       {isDark ? t('theme.light') : t('theme.dark')}
-    </button>
+    </Button>
   )
 }

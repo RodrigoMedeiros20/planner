@@ -8,7 +8,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label={t('nav.label')}
-      className="border-border bg-surface/90 fixed inset-x-0 bottom-0 z-10 grid grid-cols-3 border-t px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur transition-colors duration-300 md:hidden"
+      className="border-border bg-card/90 fixed inset-x-0 bottom-0 z-10 grid grid-cols-3 border-t px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur transition-colors duration-300 md:hidden"
     >
       {navItems.map(({ to, labelKey, icon: Icon }) => (
         <NavLink
@@ -17,7 +17,9 @@ export function BottomNav() {
           end={to === '/'}
           className={({ isActive }) =>
             `flex min-h-12 flex-col items-center justify-center gap-1 text-[11px] transition-colors ${
-              isActive ? 'text-accent font-semibold' : 'text-muted font-medium'
+              isActive
+                ? 'text-primary font-semibold'
+                : 'text-muted-foreground font-medium'
             }`
           }
         >

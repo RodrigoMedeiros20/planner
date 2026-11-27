@@ -13,9 +13,9 @@ export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
   const { t } = useTranslation()
 
   return (
-    <aside className="border-border bg-surface sticky top-0 hidden h-screen w-64 shrink-0 flex-col gap-7 border-r px-4 py-7 transition-colors duration-300 md:flex">
+    <aside className="border-border bg-card sticky top-0 hidden h-screen w-64 shrink-0 flex-col gap-7 border-r px-4 py-7 transition-colors duration-300 md:flex">
       <div className="flex items-center gap-2.5 px-2.5">
-        <span className="bg-accent text-on-accent flex size-9 items-center justify-center rounded-[10px]">
+        <span className="bg-primary text-primary-foreground flex size-9 items-center justify-center rounded-[10px]">
           <Check className="size-[18px]" strokeWidth={2.6} aria-hidden="true" />
         </span>
         <span className="text-lg font-bold tracking-tight">Planner</span>
@@ -30,8 +30,8 @@ export function Sidebar({ theme, onToggleTheme }: SidebarProps) {
             className={({ isActive }) =>
               `flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-sm transition-colors ${
                 isActive
-                  ? 'bg-accent-soft text-accent font-semibold'
-                  : 'text-muted hover:bg-surface-muted hover:text-foreground font-medium'
+                  ? 'bg-accent text-accent-foreground font-semibold'
+                  : 'text-muted-foreground hover:bg-muted hover:text-foreground font-medium'
               }`
             }
           >

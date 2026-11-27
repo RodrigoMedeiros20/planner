@@ -1,5 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { supportedLanguages, type Language } from '@/shared/config/i18n'
+import { Label } from '@/shared/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/select'
 
 const languageNames: Record<Language, string> = {
   'pt-BR': 'Português',
@@ -10,19 +18,26 @@ export function LanguageSelect() {
   const { t, i18n } = useTranslation()
 
   return (
-    <label className="flex max-w-xs flex-col gap-2">
-      <span className="text-sm font-semibold">{t('settings.language')}</span>
-      <select
+    <div className="flex max-w-xs flex-col gap-2">
+      <Label htmlFor="language">{t('settings.language')}</Label>
+      <Select
         value={i18n.language}
-        onChange={(event) => i18n.changeLanguage(event.target.value)}
-        className="border-border bg-surface text-foreground min-h-11 rounded-xl border px-3 text-sm transition-colors"
+        onValueChange={(value) => i18n.changeLanguage(value)}
       >
-        {supportedLanguages.map((language) => (
-          <option key={language} value={language}>
-            {languageNames[language]}
-          </option>
-        ))}
-      </select>
-    </label>
+        <SelectTrigger
+          id="language"
+          className="bg-card w-full px-3 data-[size=default]:h-11"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent position="popper">
+          {supportedLanguages.map((language) => (
+            <SelectItem key={language} value={language} className="py-2">
+              {languageNames[language]}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   )
 }
